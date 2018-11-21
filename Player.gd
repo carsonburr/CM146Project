@@ -9,8 +9,17 @@ Online sprite sheet cutter: https://ezgif.com/sprite-cutter/ezgif-4-4210e31654a4
 Had to use cutting by tile size.
 """
 
+# signal hit
+signal shoot
+
 export (int) var speed # How fast the player will move (pixels/sec).
 var screensize
+
+# bullet = fireball
+export (PackedScene) var Bullet
+export (float) var bullet_cooldown
+
+var can_shoot = true
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -18,6 +27,11 @@ func _ready():
 	# initial player position
 	position.x = screensize.x / 2
 	position.y = screensize.y / 2
+	
+	# set wait time to bullet cooldown
+	$BulletTimer.wait_time = bullet_cooldown
+	
+	$BulletSpawnPoint.position = position
 
 func _process(delta):
 	var velocity = Vector2()
@@ -49,3 +63,26 @@ func _process(delta):
 		$AnimatedSprite.animation = "up"
 	elif velocity.y > 0:
 		$AnimatedSprite.animation = "down"
+		
+	if Input.is_action_pressed("click"):
+		shoot()
+		
+	control(delta)
+		
+func control(delta):
+	# normally would be ex. the turret of a tank not AnimatedSprite
+	# $AnimatedSprite.look_at(get_global_mouse_position())
+	$BulletSpawnPoint.look_at(get_global_mouse_position())
+	$BulletSpawnPoint.global_position = position
+	pass
+		
+func shoot():
+	if can_shoot:
+		can_shoot = false
+		$BulletTimer.start()
+		# $AnimatedSprite.global_rotation
+		var dir = Vector2(1, 0).rotated($BulletSpawnPoint.global_rotation)
+		emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
+
+func _on_BulletTimer_timeout():
+	can_shoot = true

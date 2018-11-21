@@ -1,38 +1,39 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://images/Player/tile003.png" type="Texture" id=2]
-[ext_resource path="res://images/Player/tile004.png" type="Texture" id=3]
-[ext_resource path="res://images/Player/tile005.png" type="Texture" id=4]
-[ext_resource path="res://images/Player/tile009.png" type="Texture" id=5]
-[ext_resource path="res://images/Player/tile010.png" type="Texture" id=6]
-[ext_resource path="res://images/Player/tile011.png" type="Texture" id=7]
-[ext_resource path="res://images/Player/tile000.png" type="Texture" id=8]
-[ext_resource path="res://images/Player/tile001.png" type="Texture" id=9]
-[ext_resource path="res://images/Player/tile002.png" type="Texture" id=10]
-[ext_resource path="res://images/Player/tile006.png" type="Texture" id=11]
-[ext_resource path="res://images/Player/tile007.png" type="Texture" id=12]
-[ext_resource path="res://images/Player/tile008.png" type="Texture" id=13]
+[ext_resource path="res://PlayerBullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://images/Player/tile003.png" type="Texture" id=3]
+[ext_resource path="res://images/Player/tile004.png" type="Texture" id=4]
+[ext_resource path="res://images/Player/tile005.png" type="Texture" id=5]
+[ext_resource path="res://images/Player/tile009.png" type="Texture" id=6]
+[ext_resource path="res://images/Player/tile010.png" type="Texture" id=7]
+[ext_resource path="res://images/Player/tile011.png" type="Texture" id=8]
+[ext_resource path="res://images/Player/tile000.png" type="Texture" id=9]
+[ext_resource path="res://images/Player/tile001.png" type="Texture" id=10]
+[ext_resource path="res://images/Player/tile002.png" type="Texture" id=11]
+[ext_resource path="res://images/Player/tile006.png" type="Texture" id=12]
+[ext_resource path="res://images/Player/tile007.png" type="Texture" id=13]
+[ext_resource path="res://images/Player/tile008.png" type="Texture" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "up",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "down",
 "speed": 5.0
@@ -59,6 +60,8 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 300
+Bullet = ExtResource( 2 )
+bullet_cooldown = 0.4
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="0"]
 
@@ -68,5 +71,16 @@ animation = "right"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 2 )
+
+[node name="BulletSpawnPoint" type="Position2D" parent="." index="2"]
+
+[node name="BulletTimer" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="BulletTimer" to="." method="_on_BulletTimer_timeout"]
 
 
