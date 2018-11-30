@@ -29,7 +29,7 @@ func _ready():
 	
 	# initial player position
 	position.x = screensize.x / 2
-	position.y = screensize.y / 2
+	position.y = screensize.y / 2 + 100
 	
 	# set wait time to bullet cooldown
 	$BulletTimer.wait_time = bullet_cooldown
@@ -85,28 +85,6 @@ func _process(delta):
 		$AnimatedSprite.animation = "down"
 	elif deg_angle >= 120 and deg_angle <= 150:
 		$AnimatedSprite.animation = "down-left"
-	
-	"""
-	# 4-way rotation animation
-	if deg_angle > -45 and deg_angle < 45:
-		$AnimatedSprite.animation = "right"
-	elif deg_angle <= -45 and deg_angle > -135:
-		$AnimatedSprite.animation = "up"
-	elif (deg_angle <= -135 and deg_angle > -180) or (deg_angle >= 135 and deg_angle < 180):
-		$AnimatedSprite.animation = "left"
-	elif deg_angle >= 45 and deg_angle < 135:
-		$AnimatedSprite.animation = "down"
-	
-	# normal walking animation
-	if velocity.x > 0:
-		$AnimatedSprite.animation = "right"
-	elif velocity.x < 0:
-		$AnimatedSprite.animation = "left"
-	elif velocity.y < 0:
-		$AnimatedSprite.animation = "up"
-	elif velocity.y > 0:
-		$AnimatedSprite.animation = "down"
-	"""
 		
 	if Input.is_action_pressed("click"):
 		shoot()
