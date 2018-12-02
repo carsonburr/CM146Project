@@ -4,12 +4,19 @@ extends Area2D
 Using temp player images, mage-f-32x36-sprite-png,
 from https://opengameart.org/content/antifareas-rpg-sprite-set-1-enlarged-w-transparent-background-fixed
 by Antifarea.
+
 purple-f-32x32-sprite-png/,
 from http://himeworks.com/2014/11/introducing-diagonal-movement-into-rpg-maker/
 by HIME.
 
 Online sprite sheet cutter: https://ezgif.com/sprite-cutter/ezgif-4-4210e31654a4.png
 Had to use cutting by tile size.
+
+Tutorial links:
+http://docs.godotengine.org/en/3.0/getting_started/step_by_step/your_first_game.html
+
+Parts of video series, top-down tank shooter
+https://www.youtube.com/watch?v=sQ1FpD0DYF8
 """
 
 # signal hit
