@@ -23,6 +23,10 @@ func _ready():
 	# speed in frames per second
 	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
 	#print($AnimatedSprite.frames.get_animation_speed("shooting"))
+	rotation = 0
+	
+	# wait time set to 2
+	$Lifetime.start()
 
 func start(_position, _direction):
 	# position = _position
@@ -36,7 +40,7 @@ func _process(delta):
 	# PI / 6 = 30 deg / 6 = 5 deg
 	rotation = rotation + PI / 36
 	
-	if $AnimatedSprite.animation == "shooting" and $AnimatedSprite.frame == 5:
+	if $AnimatedSprite.animation == "shooting" and $AnimatedSprite.frame == 6:
 		$AnimatedSprite.stop()
 		# $AnimatedSprite.animation = "final beam"
 	
@@ -50,6 +54,6 @@ func _on_Bullet_body_entered(body):
 	# if body.has_method("take_damage"):
 		# body.take_damage(body)
 
-# bullet explodes after a certain time, optional
+# laser stops firing after a certain time
 func _on_Lifetime_timeout():
 	explode()

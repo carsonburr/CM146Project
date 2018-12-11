@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile000.png-1c681349e5bfbdc4394e47883493a7a6.stex"
+path="res://.import/tile1.png-0ac63f910d2d1ca0796707ca99dd101a.stex"
 
 [deps]
 
-source_file="res://images/laser-56x258-sprite-png/tile000.png"
-dest_files=[ "res://.import/tile000.png-1c681349e5bfbdc4394e47883493a7a6.stex" ]
+source_file="res://images/laser-v2-56x516-sprite-png/tile1.png"
+dest_files=[ "res://.import/tile1.png-0ac63f910d2d1ca0796707ca99dd101a.stex" ]
 
 [params]
 
