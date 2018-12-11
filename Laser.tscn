@@ -55,4 +55,13 @@ frames = SubResource( 2 )
 animation = "shooting"
 offset = Vector2( 0, 240 )
 
+[node name="ChargeTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 2.5
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_ChargeTimer_timeout"]
+
 

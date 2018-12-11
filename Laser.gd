@@ -9,6 +9,8 @@ extends "res://Bullet.gd"
 
 var screensize
 
+var charging
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -20,29 +22,37 @@ func _ready():
 	position.x = screensize.x / 2
 	position.y = screensize.y / 2 - 100
 	
+	
 	# speed in frames per second
 	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
 	#print($AnimatedSprite.frames.get_animation_speed("shooting"))
 	rotation = 0
 	
-	# wait time set to 2
-	$Lifetime.start()
+	$AnimatedSprite.animation = "shooting"
+	charging = true
+	
+	# charge time needs to be > lifetime
+	# wait time set to 2.5
+	$ChargeTimer.start()
 
 func start(_position, _direction):
 	# position = _position
 	rotation = _direction.angle()
 	$Lifetime.wait_time = lifetime
-	velocity = _direction * speed
+	# velocity = _direction * speed
 
 func _process(delta):
 	# position += velocity * delta
-	$AnimatedSprite.play()
-	# PI / 6 = 30 deg / 6 = 5 deg
-	rotation = rotation + PI / 36
 	
-	if $AnimatedSprite.animation == "shooting" and $AnimatedSprite.frame == 6:
-		$AnimatedSprite.stop()
-		# $AnimatedSprite.animation = "final beam"
+	# laser is ready to fire
+	if charging == false:
+		$AnimatedSprite.play()
+	
+		rotation = rotation + PI / 36
+	
+		if $AnimatedSprite.animation == "shooting" and $AnimatedSprite.frame == 6:
+			$AnimatedSprite.stop()
+			# $AnimatedSprite.animation = "final beam"
 	
 func explode():
 	queue_free()
@@ -57,3 +67,11 @@ func _on_Bullet_body_entered(body):
 # laser stops firing after a certain time
 func _on_Lifetime_timeout():
 	explode()
+	charging = true
+
+# laser only starts firing after a certain time
+# gives player warning
+func _on_ChargeTimer_timeout():
+	charging = false
+	# laser time set to 2
+	$Lifetime.start()
