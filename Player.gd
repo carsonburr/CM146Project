@@ -1,4 +1,5 @@
-extends Area2D
+# extends Area2D
+extends KinematicBody2D
 
 """
 Using temp player images, mage-f-32x36-sprite-png,
