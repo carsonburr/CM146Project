@@ -1,15 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Boss.gd" type="Script" id=1]
 [ext_resource path="res://EnemyBullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://images/Boss/DevArtBoss.png" type="Texture" id=3]
+[ext_resource path="res://images/Boss/BIG_MAMA-0.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[node name="Boss" type="Area2D" index="0"]
+[node name="Boss" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -21,16 +16,24 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="." index="1"]
-
+position = Vector2( 0, 0.372406 )
 texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 121, 7, 132, 208 )
+_sections_unfolded = [ "Region" ]
 
-[node name="BulletSpawnPoint" type="Position2D" parent="." index="2"]
+[node name="BulletSpawnPoint" type="Position2D" parent="." index="1"]
 
-[node name="Behavior" type="Node" parent="." index="3"]
+position = Vector2( -0.0280609, 49.4974 )
+
+[node name="Behavior" type="Node" parent="." index="2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="3"]
+
+position = Vector2( -0.581787, 1.74539 )
+build_mode = 0
+polygon = PoolVector2Array( -47.0328, -99.0026, -18.5249, -100.748, -1.65283, -87.3667, 12.892, -100.166, 46.0543, -100.166, 54.1995, -48.3865, 62.9264, -41.9867, 63.5081, 18.5199, 48.9633, 25.5014, 48.3815, 69.7178, -43.542, 70.2996, -54.5961, 24.3378, -65.0684, 19.6835, -68.5592, -20.4603, -60.4141, -48.9683, -48.1964, -55.9498 )
 
 
