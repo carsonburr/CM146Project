@@ -25,4 +25,6 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
+[connection signal="body_entered" from="." to="." method="_on_PlayerBullet_body_entered"]
+
 

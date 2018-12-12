@@ -57,12 +57,14 @@ func _process(delta):
 func explode():
 	queue_free()
 
+"""
 func _on_Bullet_body_entered(body):
 	# when hit wall
 	explode()
 	# otherwise, if hit boss or player
 	# if body.has_method("take_damage"):
 		# body.take_damage(body)
+"""
 
 # laser stops firing after a certain time
 func _on_Lifetime_timeout():
@@ -75,3 +77,9 @@ func _on_ChargeTimer_timeout():
 	charging = false
 	# laser time set to 2
 	$Lifetime.start()
+
+
+func _on_Laser_body_entered(body):
+	if body.get_name() != "Boss" and $AnimatedSprite.animation == "shooting" and $AnimatedSprite.frame == 6:
+		#print("laser dmg")
+		pass

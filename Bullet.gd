@@ -23,13 +23,24 @@ func _process(delta):
 func explode():
 	queue_free()
 
+# normal enemybullet and playerbullet share this function
 func _on_Bullet_body_entered(body):
-	# when hit wall
-	explode()
+	# explode()
 	# otherwise, if hit boss or player
 	# if body.has_method("take_damage"):
-		# body.take_damage(body)
+		# body.take_damage(body)\
+	pass
 
 # bullet explodes after a certain time, optional
 func _on_Lifetime_timeout():
 	explode()
+
+# we don't want bullets to disappear on contact with shooter itself
+func _on_PlayerBullet_body_entered(body):
+	if body.get_name() != "Player":
+		explode()
+
+
+func _on_EnemyBullet_body_entered(body):
+	if body.get_name() != "Boss":
+		explode()
