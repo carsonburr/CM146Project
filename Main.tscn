@@ -17,6 +17,8 @@ script = ExtResource( 1 )
 
 [connection signal="shoot" from="Player" to="." method="_on_shoot"]
 
+[connection signal="respawn_laser" from="Boss" to="." method="_on_Boss_respawn_laser"]
+
 [connection signal="shoot" from="Boss" to="." method="_on_shoot"]
 
 

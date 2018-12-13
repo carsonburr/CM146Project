@@ -9,6 +9,7 @@ extends "res://Bullet.gd"
 
 var screensize
 
+# laser spawns every 8 seconds, waits 2.5 seconds before firing
 var charging
 
 func _ready():
@@ -22,6 +23,8 @@ func _ready():
 	position.x = screensize.x / 2
 	position.y = screensize.y / 2 - 100
 	
+	"""
+	moved to start()
 	
 	# speed in frames per second
 	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
@@ -34,8 +37,27 @@ func _ready():
 	# charge time needs to be > lifetime
 	# wait time set to 2.5
 	$ChargeTimer.start()
+	
+	print("ready laser")
+	"""
+	
 
 func start(_position, _direction):
+	
+	# print("starting laser")
+	# speed in frames per second
+	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
+	#print($AnimatedSprite.frames.get_animation_speed("shooting"))
+	rotation = 0
+	
+	$AnimatedSprite.animation = "shooting"
+	charging = true
+	
+	# charge time needs to be > lifetime
+	# wait time set to 2.5
+	$ChargeTimer.start()
+	
+	
 	# position = _position
 	rotation = _direction.angle()
 	$Lifetime.wait_time = lifetime
@@ -75,6 +97,7 @@ func _on_Lifetime_timeout():
 # gives player warning
 func _on_ChargeTimer_timeout():
 	charging = false
+	# print("finished charging")
 	# laser time set to 2
 	$Lifetime.start()
 
