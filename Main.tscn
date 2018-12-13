@@ -27,6 +27,4 @@ _sections_unfolded = [ "Transform" ]
 
 [connection signal="shoot" from="Player" to="." method="_on_shoot"]
 
-[connection signal="shoot" from="Boss" to="." method="_on_shoot"]
-
 

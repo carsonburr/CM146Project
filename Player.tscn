@@ -88,9 +88,6 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 speed = 300
 Bullet = ExtResource( 2 )
 bullet_cooldown = 0.4
