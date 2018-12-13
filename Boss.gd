@@ -45,5 +45,6 @@ func move(args):
 
 # for testing purposes only
 # can remove this timer
-func _on_LaserRespawnTimer_timeout():
-	respawn_laser()
+# func _on_LaserRespawnTimer_timeout():
+	# respawn_laser()
+	pass
