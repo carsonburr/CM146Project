@@ -30,3 +30,5 @@ func shoot(dir):
 
 func move(args):
 	pass
+
+
