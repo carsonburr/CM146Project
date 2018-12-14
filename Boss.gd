@@ -43,6 +43,5 @@ func respawn_laser():
 	# print("sent out laser signal")
 
 func move(args):
-	pass
-
-
+	position.x += args[0]
+	position.y += args[1]
