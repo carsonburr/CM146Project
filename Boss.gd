@@ -4,6 +4,8 @@ signal shoot
 
 signal respawn_laser
 
+signal gun_fell
+
 export (PackedScene) var Bullet
 
 export (PackedScene) var Missile
@@ -20,6 +22,8 @@ func _ready():
 	position.y = screensize.y / 2 - 100
 	action_choice_tree = ChooseBehavior.new(self)
 	action_choice_tree.call_deferred("execute")
+	var main = get_node("/root/Main")
+	connect("gun_fell", main, "gun_fell")
 
 	# $LaserRespawnTimer.start()
 
@@ -52,12 +56,13 @@ func move(args):
 
 func disable():
 	print("boss disabled")
+	emit_signal('gun_fell')
 	var gun = $gun_laser
 	#gun.modulate = Color(0,0,0,0.6)
 	are_disabled(gun)
 
 func are_disabled(disabled_gun):
-	disabled_gun.modulate = Color(0,0,0,0.6)
+	disabled_gun.modulate = Color(0,0,0,0)
 
 func rotate_boss(target):
 	var pos_boss = target

@@ -6,10 +6,13 @@ export (float) var lifetime
 
 var velocity = Vector2()
 
+signal damage_taken
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	pass
+	var main = get_node("/root/Main/Player")
+	connect("damage_taken", main, "damage_taken")
 
 func start(_position, _direction):
 	position = _position
@@ -47,3 +50,5 @@ func _on_PlayerBullet_body_entered(body):
 func _on_EnemyBullet_body_entered(body):
 	if body.owner.get_name() != "Boss":
 		explode()
+		if(body.get_name() == "Player"):
+			emit_signal("damage_taken")

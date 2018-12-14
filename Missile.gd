@@ -18,6 +18,7 @@ var dir
 var main
 signal explosion
 var player
+signal damage_taken
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -25,6 +26,7 @@ func _ready():
 	main = get_node("/root/Main")
 	connect("explosion", main, "make_explosion")
 	player = get_node("/root/Main/Player")
+	connect("damage_taken", player, "damage_taken")
 	
 
 func start(_position, _direction):
@@ -75,3 +77,5 @@ func _on_Missile_body_entered(body):
 	if body.owner.get_name() != "Boss":
 		emit_signal("explosion", Expl, global_position)
 		explode()
+		if(body.get_name() == "Player"):
+			emit_signal("damage_taken")

@@ -1,5 +1,7 @@
 extends Node
 
+export (PackedScene) var gun
+
 func _on_shoot(bullet, _position, _direction):
 	var b = bullet.instance()
 	add_child(b)
@@ -15,3 +17,9 @@ func make_explosion(Expl, _position):
 	var epl = Expl.instance()
 	add_child(epl)
 	epl.start(_position)
+	
+func gun_fell():
+	var g = gun.instance()
+	g.position = Vector2(randi()%600+200, randi()%300+100)
+	add_child(g)
+	pass

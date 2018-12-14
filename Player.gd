@@ -51,6 +51,12 @@ func _ready():
 	connect("disable", boss, "disable")
 
 func _process(delta):
+	if(modulate != Color(1,1,1,1)):
+		var g = modulate[1]
+		var b = modulate[2]
+		g = clamp(g + 0.1,0,1)
+		b = clamp(b + 0.1,0,1)
+		modulate = Color(1,g,b,1)
 	var velocity = Vector2()
 	# player's movement keys: WASD
 	if Input.is_action_pressed("move_right"):
@@ -124,6 +130,11 @@ func shoot():
 
 func disable():
 	emit_signal("disable")
+	
+func damage_taken():
+	#var player = get_node("Player")
+	modulate = Color(1,0,0,1)
+	print(modulate)
 
 
 func _on_BulletTimer_timeout():
