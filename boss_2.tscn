@@ -5,7 +5,7 @@
 [ext_resource path="res://Laser.tscn" type="PackedScene" id=3]
 [ext_resource path="res://images/Boss/BIG_MAMA-0.png" type="Texture" id=4]
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="Node2D" type="Node2D"]
 
 position = Vector2( 0.367249, 0 )
 script = ExtResource( 1 )
@@ -18,7 +18,7 @@ Laser = ExtResource( 3 )
 editor/display_folded = true
 position = Vector2( -0.798279, -0.166382 )
 rotation = 0.00131588
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 121, 7, 132, 180 )
 _sections_unfolded = [ "Region" ]
@@ -42,11 +42,12 @@ polygon = PoolVector2Array( -46.6344, -96.0866, -17.5113, -95.4247, -0.96402, -8
 
 [node name="gun_laser" type="Sprite" parent="." index="1"]
 
-position = Vector2( -2.05566, 16.6892 )
+editor/display_folded = true
+position = Vector2( -1.68838, 16.6892 )
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 45, 56, 64, 130 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Material", "Region" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -191,3 +192,5 @@ polygon = PoolVector2Array( -45.2515, -10.9659, 47.4696, -11.6053, 44.9118, 13.3
 position = Vector2( -0.467255, 131.507 )
 
 [node name="Behavior" type="Node" parent="." index="7"]
+
+

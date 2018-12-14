@@ -61,6 +61,7 @@ func follow_player():
 	dir = (pos_player - position).normalized()
 	rotation = dir.angle()+deg2rad(270)
 	velocity = dir * speed
+	speed = clamp(speed * 1.15,0,300)
 	
 
 func _on_Lifetime_timeout():
@@ -68,3 +69,9 @@ func _on_Lifetime_timeout():
 	emit_signal("explosion", Expl, global_position)
 	explode()
 
+
+
+func _on_Missile_body_entered(body):
+	if body.owner.get_name() != "Boss":
+		emit_signal("explosion", Expl, global_position)
+		explode()

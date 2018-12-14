@@ -12,6 +12,8 @@ export (PackedScene) var Laser
 const ChooseBehavior = preload("res://behavior/ChooseBehavior.gd")
 var action_choice_tree
 
+var disabled_gun
+
 func _ready():
 	var screensize = get_viewport_rect().size
 	position.x = screensize.x / 2
@@ -45,3 +47,13 @@ func respawn_laser():
 func move(args):
 	position.x += args[0]
 	position.y += args[1]
+	
+func disable():
+	print("boss disabled")
+	var gun = $gun_laser
+	#gun.modulate = Color(0,0,0,0.6)
+	are_disabled(gun)
+	
+func are_disabled(disabled_gun):
+	disabled_gun.modulate = Color(0,0,0,0.6)
+	

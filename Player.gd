@@ -31,6 +31,8 @@ export (PackedScene) var Bullet
 export (float) var bullet_cooldown
 
 var can_shoot = true
+signal disable
+var boss
 
 func _ready():
 	screensize = get_viewport_rect().size
@@ -45,6 +47,8 @@ func _ready():
 	$BulletSpawnPoint.position = position
 	
 	print("player ready")
+	boss = get_node("/root/Main/Boss")
+	connect("disable", boss, "disable")
 
 func _process(delta):
 	var velocity = Vector2()
@@ -99,6 +103,9 @@ func _process(delta):
 	if Input.is_action_pressed("click"):
 		shoot()
 		
+	if Input.is_action_just_pressed("space"):
+		disable()
+		
 	control(delta)
 		
 func control(delta):
@@ -114,6 +121,10 @@ func shoot():
 		# $AnimatedSprite.global_rotation
 		var dir = Vector2(1, 0).rotated($BulletSpawnPoint.global_rotation)
 		emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
+		
+func disable():
+	emit_signal("disable")
+	
 
 func _on_BulletTimer_timeout():
 	can_shoot = true

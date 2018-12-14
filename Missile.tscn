@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
 
-[node name="Missile" type="Area2D"]
+[node name="Missile" type="Area2D" index="0"]
 
 position = Vector2( -1.38788, 0.198273 )
 input_pickable = true
@@ -21,7 +21,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-speed = 200
+speed = 50
 damage = 1
 lifetime = 5.0
 Expl = ExtResource( 2 )
@@ -46,7 +46,7 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Missile_body_entered"]
 
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
 
