@@ -1,15 +1,14 @@
 extends Node
 
 var ent
-var life_timer = 8
+var life_timer = 6
 
 func _init(_ent):
 	name = "Behavior"
 	ent = _ent
 
 func _ready():
-	print("LaserAttack")
-	ent.respawn_laser()
+	ent.call_deferred("respawn_laser")
 	set_process(true)
 
 func _process(delta):

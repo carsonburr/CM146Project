@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 speed = null
 damage = null
-lifetime = null
+lifetime = 2.0
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

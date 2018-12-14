@@ -36,16 +36,16 @@ var boss
 
 func _ready():
 	screensize = get_viewport_rect().size
-	
+
 	# initial player position
 	position.x = screensize.x / 2
 	position.y = screensize.y / 2 + 100
-	
+
 	# set wait time to bullet cooldown
 	$BulletTimer.wait_time = bullet_cooldown
-	
+
 	$BulletSpawnPoint.position = position
-	
+
 	print("player ready")
 	boss = get_node("/root/Main/Boss")
 	connect("disable", boss, "disable")
@@ -71,17 +71,17 @@ func _process(delta):
 	position += velocity * delta
 	position.x = clamp(position.x, 0, screensize.x)
 	position.y = clamp(position.y, 0, screensize.y)
-	
-	
+
+
 	var mouse_pos = get_global_mouse_position()
-	
+
 	# convert from rad to deg w/ rad2deg() or vice versa w/ deg2rad()
 	var deg_angle = rad2deg($AnimatedSprite.get_angle_to(mouse_pos))
-	
+
 	# character starts by facing right = 0 degrees
 	# right = 0, up = -90, left = 179 or -179, down = 90
 	# face the general direction of the mouse
-	
+
 	# 8-way rotation animation
 	if deg_angle > -30 and deg_angle < 30:
 		$AnimatedSprite.animation = "right"
@@ -99,21 +99,21 @@ func _process(delta):
 		$AnimatedSprite.animation = "down"
 	elif deg_angle >= 120 and deg_angle <= 150:
 		$AnimatedSprite.animation = "down-left"
-		
+
 	if Input.is_action_pressed("click"):
 		shoot()
-		
+
 	if Input.is_action_just_pressed("space"):
 		disable()
-		
+
 	control(delta)
-		
+
 func control(delta):
 	# normally would be ex. the turret of a tank not BulletSpawnPoint or AnimatedSprite
 	# $AnimatedSprite.look_at(get_global_mouse_position())
 	$BulletSpawnPoint.look_at(get_global_mouse_position())
 	$BulletSpawnPoint.global_position = position
-		
+
 func shoot():
 	if can_shoot:
 		can_shoot = false
@@ -121,10 +121,10 @@ func shoot():
 		# $AnimatedSprite.global_rotation
 		var dir = Vector2(1, 0).rotated($BulletSpawnPoint.global_rotation)
 		emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
-		
+
 func disable():
 	emit_signal("disable")
-	
+
 
 func _on_BulletTimer_timeout():
 	can_shoot = true

@@ -10,6 +10,7 @@
 [ext_resource path="res://images/laser-v2-56x516-sprite-png/tile4.png" type="Texture" id=8]
 [ext_resource path="res://images/laser-v2-56x516-sprite-png/tile5.png" type="Texture" id=9]
 
+
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0

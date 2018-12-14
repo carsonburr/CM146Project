@@ -14,13 +14,14 @@ func _init(_ent):
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	rush_speed = 200
+	rush_speed = 150
 	timer = 0
 	left = 4
 	has_target = false
 
 func _process(delta):
 	timer += delta
+	
 	if timer < 1:
 		_shake()
 	elif timer < 3:
@@ -54,6 +55,9 @@ func _rush(delta):
 		target = _getNewTarget()
 		has_target = true
 	var targetVector = (target - ent.get_position())
+	
+	ent.rotate_boss(target)
+	
 	if targetVector.length() < rush_speed * delta:
 		ent.move(targetVector)
 	else:
