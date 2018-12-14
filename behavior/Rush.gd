@@ -14,7 +14,7 @@ func _init(_ent):
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	rush_speed = 200
+	rush_speed = 150
 	timer = 0
 	left = 4
 	has_target = false

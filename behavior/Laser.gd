@@ -17,8 +17,6 @@ func _ready():
 	
 
 func start(_position, _direction):
-	
-	print("starting laser")
 	# speed in frames per second
 	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
 	#print($AnimatedSprite.frames.get_animation_speed("shooting"))
@@ -51,7 +49,6 @@ func _process(delta):
 			# $AnimatedSprite.animation = "final beam"
 	
 func explode():
-	print("exploding")
 	queue_free()
 
 """

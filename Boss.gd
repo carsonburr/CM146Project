@@ -17,7 +17,7 @@ func _ready():
 	position.x = screensize.x / 2
 	position.y = screensize.y / 2 - 100
 	action_choice_tree = ChooseBehavior.new(self)
-	action_choice_tree.execute()
+	action_choice_tree.call_deferred("execute")
 	
 	# $LaserRespawnTimer.start()
 
@@ -26,11 +26,13 @@ func _process(delta):
 
 func change_behavior(args):
 	action_choice_tree.execute()
+	return true
 
 func set_behavior_node(args):
 	$Behavior.queue_free()
 	remove_child($Behavior)
 	add_child(args.new_behavior.new(args.new_args))
+	return true
 
 func shoot(dir):
 	emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
