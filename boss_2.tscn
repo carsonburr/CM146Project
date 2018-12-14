@@ -4,8 +4,9 @@
 [ext_resource path="res://EnemyBullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://images/Boss/BIG_MAMA-0.png" type="Texture" id=3]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" index="0"]
 
+position = Vector2( 0.367249, 0 )
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 Missile = null
@@ -14,7 +15,8 @@ Laser = null
 [node name="mainbody" type="Sprite" parent="." index="0"]
 
 editor/display_folded = true
-position = Vector2( -0.798279, 0.200882 )
+position = Vector2( -0.798279, -0.166382 )
+rotation = 0.00131588
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 121, 7, 132, 180 )
@@ -76,6 +78,9 @@ texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 285, 15, 34, 65 )
 _sections_unfolded = [ "Region" ]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="gun_missile" index="0"]
 
@@ -94,7 +99,7 @@ polygon = PoolVector2Array( -8.24481, -29.2357, 6.31674, -29.8976, 15.5832, -24.
 
 [node name="spawnpoint_missile" type="Position2D" parent="gun_missile" index="1"]
 
-position = Vector2( 139.907, 3.33298 )
+position = Vector2( -1.1201, 23.5322 )
 
 [node name="gun_spread" type="Sprite" parent="." index="3"]
 
@@ -128,7 +133,7 @@ position = Vector2( -0.319672, 22.6972 )
 [node name="gun_shockwave" type="Sprite" parent="." index="4"]
 
 editor/display_folded = true
-position = Vector2( -1.48349, -82.7937 )
+position = Vector2( -1.85075, -82.7937 )
 rotation = 3.14159
 texture = ExtResource( 3 )
 region_enabled = true
