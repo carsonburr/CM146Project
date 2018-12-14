@@ -45,3 +45,8 @@ func respawn_laser():
 func move(args):
 	position.x += args[0]
 	position.y += args[1]
+	
+func rotate_boss(target):
+	var pos_boss = target
+	var dir = (target - global_position).normalized()
+	rotation = dir.angle() + deg2rad(270)

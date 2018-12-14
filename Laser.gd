@@ -17,6 +17,9 @@ func _ready():
 	# Initialization here
 	speed = 0
 	
+	# hide laser before starting game or starting laser
+	hide()
+	
 	screensize = get_viewport_rect().size
 	# arbitrary position, can change later
 	# boss positon: (screensize.x / 2, screensize.y / 2 - 100)
@@ -43,7 +46,7 @@ func _ready():
 	
 
 func start(_position, _direction):
-	
+	show()
 	# print("starting laser")
 	# speed in frames per second
 	$AnimatedSprite.frames.set_animation_speed("shooting", 10)

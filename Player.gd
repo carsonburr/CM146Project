@@ -44,7 +44,7 @@ func _ready():
 	
 	$BulletSpawnPoint.position = position
 	
-	print("player ready")
+	# print("player ready")
 
 func _process(delta):
 	var velocity = Vector2()

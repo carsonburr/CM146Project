@@ -25,7 +25,6 @@ scale = Vector2( 2, 2 )
 [node name="Boss" parent="." index="3" instance=ExtResource( 5 )]
 
 scale = Vector2( 0.75, 0.75 )
-_sections_unfolded = [ "Transform" ]
 Missile = ExtResource( 6 )
 Laser = ExtResource( 4 )
 
