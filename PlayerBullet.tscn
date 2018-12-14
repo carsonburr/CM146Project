@@ -6,8 +6,8 @@
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 28.2247
-height = 0.0826569
+radius = 25.0878
+height = 0.313797
 
 [node name="PlayerBullet" index="0" instance=ExtResource( 1 )]
 
@@ -24,5 +24,7 @@ texture = ExtResource( 2 )
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
+
+[connection signal="body_entered" from="." to="." method="_on_PlayerBullet_body_entered"]
 
 

@@ -23,4 +23,6 @@ texture = ExtResource( 2 )
 position = Vector2( -0.0906906, -0.0906906 )
 shape = SubResource( 1 )
 
+[connection signal="body_entered" from="." to="." method="_on_EnemyBullet_body_entered"]
+
 
