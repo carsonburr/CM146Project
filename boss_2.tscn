@@ -9,6 +9,7 @@
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 Missile = null
+Laser = null
 
 [node name="mainbody" type="Sprite" parent="." index="0"]
 

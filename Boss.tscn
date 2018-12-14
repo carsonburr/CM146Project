@@ -33,13 +33,4 @@ texture = ExtResource( 4 )
 
 [node name="Behavior" type="Node" parent="." index="3"]
 
-[node name="LaserRespawnTimer" type="Timer" parent="." index="4"]
-
-process_mode = 1
-wait_time = 8.0
-one_shot = false
-autostart = false
-
-[connection signal="timeout" from="LaserRespawnTimer" to="." method="_on_LaserRespawnTimer_timeout"]
-
 

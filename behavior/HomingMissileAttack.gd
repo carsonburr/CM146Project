@@ -66,4 +66,4 @@ func attack(args):
 		pos_player = player.get_position()
 	var pos_gun = ent.get_node("gun_missile/spawnpoint_missile").global_position
 	dir = (pos_player - pos_gun).normalized()
-	ent.shoot(dir)
+	ent.shoot_missile(dir)

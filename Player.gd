@@ -43,6 +43,8 @@ func _ready():
 	$BulletTimer.wait_time = bullet_cooldown
 	
 	$BulletSpawnPoint.position = position
+	
+	print("player ready")
 
 func _process(delta):
 	var velocity = Vector2()

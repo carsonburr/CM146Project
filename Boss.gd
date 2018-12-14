@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D # KinematicBody2D
 
 signal shoot
 
@@ -19,7 +19,7 @@ func _ready():
 	action_choice_tree = ChooseBehavior.new(self)
 	action_choice_tree.execute()
 	
-	$LaserRespawnTimer.start()
+	# $LaserRespawnTimer.start()
 
 func _process(delta):
 	pass
@@ -35,8 +35,11 @@ func set_behavior_node(args):
 func shoot(dir):
 	emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
 	
+func shoot_missile(dir):
+	emit_signal('shoot', Missile, get_node("gun_missile/spawnpoint_missile").global_position, dir)
+	
 func respawn_laser():
-	emit_signal('respawn_laser', Laser, $BulletSpawnPoint.global_position, Vector2(0, 0))
+	emit_signal('respawn_laser', Laser, get_node("gun_laser/spawnpoint_laser").global_position, Vector2(0, 0))
 	# print("sent out laser signal")
 
 func move(args):
