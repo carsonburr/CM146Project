@@ -8,4 +8,10 @@ func _on_shoot(bullet, _position, _direction):
 func _on_Boss_respawn_laser(laser, _position, _direction):
 	var la = laser.instance()
 	add_child(la)
+	# print("added laser")
 	la.start(_position, _direction)
+
+func make_explosion(Expl, _position):
+	var epl = Expl.instance()
+	add_child(epl)
+	epl.start(_position)

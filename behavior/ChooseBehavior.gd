@@ -3,7 +3,7 @@ extends Node
 const RandomSelector = preload("res://behavior/primitives/RandomSelector.gd")
 const Action = preload("res://behavior/primitives/Action.gd")
 const HomingMissileAttack = preload("res://behavior/HomingMissileAttack.gd")
-const SpreadAttack = preload("res://behavior/SpreadAttack.gd") 
+const SpreadAttack = preload("res://behavior/SpreadAttack.gd")
 const LaserAttack = preload("res://behavior/LaserAttack.gd")
 const Shockwave = preload("res://behavior/shockwave.gd")
 const Rush = preload("res://behavior/Rush.gd")
