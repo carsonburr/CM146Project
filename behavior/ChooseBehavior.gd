@@ -20,12 +20,12 @@ func _init(_ent):
 	tree.add_btchild(\
 			Action.new(\
 				funcref(ent, "set_behavior_node"),\
-				{"new_behavior": LaserAttack, "new_args": ent}))
+				{"new_behavior": Rush, "new_args": ent}))
 				
 	tree.add_btchild(\
 			Action.new(\
 				funcref(ent, "set_behavior_node"),\
-				{"new_behavior": Rush, "new_args": ent}))
+				{"new_behavior": LaserAttack, "new_args": ent}))
 	
 func execute():
 	tree.execute()

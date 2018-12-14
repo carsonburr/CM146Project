@@ -7,44 +7,18 @@ extends "res://Bullet.gd"
 # inherited Sprite and velocity unused
 # var velocity = Vector2()
 
-var screensize
-
 # laser spawns every 8 seconds, waits 2.5 seconds before firing
 var charging
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	speed = 0
-	
-	screensize = get_viewport_rect().size
-	# arbitrary position, can change later
-	# boss positon: (screensize.x / 2, screensize.y / 2 - 100)
-	position.x = screensize.x / 2
-	position.y = screensize.y / 2 - 100
-	
-	"""
-	moved to start()
-	
-	# speed in frames per second
-	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
-	#print($AnimatedSprite.frames.get_animation_speed("shooting"))
-	rotation = 0
-	
-	$AnimatedSprite.animation = "shooting"
-	charging = true
-	
-	# charge time needs to be > lifetime
-	# wait time set to 2.5
-	$ChargeTimer.start()
-	
-	print("ready laser")
-	"""
+	set_process(true)
 	
 
 func start(_position, _direction):
 	
-	# print("starting laser")
+	print("starting laser")
 	# speed in frames per second
 	$AnimatedSprite.frames.set_animation_speed("shooting", 10)
 	#print($AnimatedSprite.frames.get_animation_speed("shooting"))
@@ -55,13 +29,13 @@ func start(_position, _direction):
 	
 	# charge time needs to be > lifetime
 	# wait time set to 2.5
+	$ChargeTimer.wait_time = 2.5
 	$ChargeTimer.start()
 	
 	
-	# position = _position
+	position = _position
 	rotation = _direction.angle()
-	$Lifetime.wait_time = lifetime
-	# velocity = _direction * speed
+	$Lifetime.wait_time = 2
 
 func _process(delta):
 	# position += velocity * delta
@@ -77,6 +51,7 @@ func _process(delta):
 			# $AnimatedSprite.animation = "final beam"
 	
 func explode():
+	print("exploding")
 	queue_free()
 
 """
