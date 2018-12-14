@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Boss.gd" type="Script" id=1]
 [ext_resource path="res://EnemyBullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://images/Boss/BIG_MAMA-0.png" type="Texture" id=3]
+[ext_resource path="res://Laser.tscn" type="PackedScene" id=3]
+[ext_resource path="res://images/Boss/BIG_MAMA-0.png" type="Texture" id=4]
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -10,7 +11,7 @@ position = Vector2( 0.367249, 0 )
 script = ExtResource( 1 )
 Bullet = ExtResource( 2 )
 Missile = null
-Laser = null
+Laser = ExtResource( 3 )
 
 [node name="mainbody" type="Sprite" parent="." index="0"]
 
@@ -41,9 +42,8 @@ polygon = PoolVector2Array( -46.6344, -96.0866, -17.5113, -95.4247, -0.96402, -8
 
 [node name="gun_laser" type="Sprite" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( -2.05566, 16.6892 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 45, 56, 64, 130 )
 _sections_unfolded = [ "Region" ]
@@ -74,7 +74,7 @@ position = Vector2( 0.959045, 49.87 )
 [node name="gun_missile" type="Sprite" parent="." index="2"]
 
 position = Vector2( 62.5925, -7.07771 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 285, 15, 34, 65 )
 _sections_unfolded = [ "Region" ]
@@ -105,7 +105,7 @@ position = Vector2( -1.1201, 23.5322 )
 
 editor/display_folded = true
 position = Vector2( -66.3849, -10.138 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 286, 80, 32, 54 )
 _sections_unfolded = [ "Region" ]
@@ -135,7 +135,7 @@ position = Vector2( -0.319672, 22.6972 )
 editor/display_folded = true
 position = Vector2( -1.85075, -82.7937 )
 rotation = 3.14159
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 286, 80, 32, 54 )
 _sections_unfolded = [ "Region", "Transform" ]
@@ -164,7 +164,7 @@ position = Vector2( -0.319672, 22.6972 )
 
 editor/display_folded = true
 position = Vector2( -2.29106, 98.8677 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 136, 186, 100, 32 )
 _sections_unfolded = [ "Region" ]
@@ -191,5 +191,3 @@ polygon = PoolVector2Array( -45.2515, -10.9659, 47.4696, -11.6053, 44.9118, 13.3
 position = Vector2( -0.467255, 131.507 )
 
 [node name="Behavior" type="Node" parent="." index="7"]
-
-
