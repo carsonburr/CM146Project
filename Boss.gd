@@ -30,4 +30,5 @@ func shoot(dir):
 	emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
 
 func move(args):
-	pass
+	position.x += args[0]
+	position.y += args[1]
