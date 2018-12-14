@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Bullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Missile.gd" type="Script" id=2]
+[ext_resource path="res://images/Boss/BIG_MAMA-0.png" type="Texture" id=3]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 0, -10, 8.66025, 5, -8.66025, 5 )
+
+[node name="Missile" instance=ExtResource( 1 )]
+
+position = Vector2( -1.38788, 0.198273 )
+script = ExtResource( 2 )
+speed = 100
+damage = 1
+lifetime = 1.0
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 46, 3, 9, 47 )
+_sections_unfolded = [ "Region" ]
+
+[node name="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.249135, 13.2512 )
+scale = Vector2( 0.494244, 1.76554 )
+shape = SubResource( 1 )
+
+

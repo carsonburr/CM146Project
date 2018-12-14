@@ -2,15 +2,15 @@
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://PlayerBullet.tscn" type="PackedScene" id=2]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile036.png" type="Texture" id=3]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile037.png" type="Texture" id=4]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile038.png" type="Texture" id=5]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile012.png" type="Texture" id=6]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile013.png" type="Texture" id=7]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile014.png" type="Texture" id=8]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile024.png" type="Texture" id=9]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile025.png" type="Texture" id=10]
-[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile026.png" type="Texture" id=11]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile012.png" type="Texture" id=3]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile013.png" type="Texture" id=4]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile014.png" type="Texture" id=5]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile024.png" type="Texture" id=6]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile025.png" type="Texture" id=7]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile026.png" type="Texture" id=8]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile036.png" type="Texture" id=9]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile037.png" type="Texture" id=10]
+[ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile038.png" type="Texture" id=11]
 [ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile015.png" type="Texture" id=12]
 [ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile016.png" type="Texture" id=13]
 [ext_resource path="res://images/Player/purple-f-32x32-sprite-png/tile017.png" type="Texture" id=14]
@@ -32,17 +32,17 @@
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
-"name": "up",
+"name": "left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
-"name": "left",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "right",
+"name": "up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
@@ -88,9 +88,6 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
 speed = 300
 Bullet = ExtResource( 2 )
 bullet_cooldown = 0.4

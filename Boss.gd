@@ -1,8 +1,10 @@
-extends Area2D
+extends Node2D
 
 signal shoot
 
 export (PackedScene) var Bullet
+
+export (PackedScene) var Missile
 
 const ChooseBehavior = preload("res://behavior/ChooseBehavior.gd")
 var action_choice_tree
@@ -26,7 +28,9 @@ func set_behavior_node(args):
 	add_child(args.new_behavior.new(args.new_args))
 
 func shoot(dir):
-	emit_signal('shoot', Bullet, $BulletSpawnPoint.global_position, dir)
+	emit_signal('shoot', Missile, get_node("gun_missile/spawnpoint_missile").global_position, dir)
 
 func move(args):
 	pass
+
+
