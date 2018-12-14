@@ -4,7 +4,7 @@ const Sequence = preload("res://behavior/primitives/Sequence.gd")
 const Selector = preload("res://behavior/primitives/Selector.gd")
 const Check = preload("res://behavior/primitives/Check.gd")
 const Action = preload("res://behavior/primitives/Action.gd")
-const cooldown = 1
+const cooldown = 0.5
 const lifetime = 10
 const dir_inc = 1
 var ent
@@ -61,9 +61,9 @@ func attack(args):
 	timer -= cooldown
 	#dir = dir.rotated(dir_inc)
 	var player = get_node("/root/Main/Player")
-	var pos_player = ent.get_position()
-	if (player):
-		pos_player = player.get_position()
+	if(!player):
+		return
+	var pos_player = player.get_position()
 	var pos_gun = ent.get_node("gun_missile/spawnpoint_missile").global_position
 	dir = (pos_player - pos_gun).normalized()
 	ent.shoot_missile(dir)
