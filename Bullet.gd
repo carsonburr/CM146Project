@@ -42,5 +42,5 @@ func _on_PlayerBullet_body_entered(body):
 
 
 func _on_EnemyBullet_body_entered(body):
-	if body.get_name() != "Boss":
+	if body.owner.get_name() != "Boss":
 		explode()

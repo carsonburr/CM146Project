@@ -7,8 +7,9 @@ extends Node
 var dir
 var ent
 var dir_inc
-var timer 
-var last_shot
+var timer
+var lifetimer
+var cooldown = 2
 
 func _init(_ent):
 	name = "Behavior"
@@ -16,20 +17,21 @@ func _init(_ent):
 	dir = Vector2(0, 1)
 	dir_inc = PI/50
 	timer = 0
-	last_shot = timer
+	lifetimer = 5
 	
 
 func _process(delta):
 	timer += delta
-	if last_shot + 3 < timer:
-		last_shot = timer
+	lifetimer -= delta
+	if lifetimer < 0:
+		ent.change_behavior(null)
+	elif timer > cooldown:
+		timer -= cooldown
 		_attack()
 
 func _ready():
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
-	var hello = 2
-	
+	pass
+
 
 func _attack():
 	var i = 0
@@ -37,7 +39,4 @@ func _attack():
 		ent.shoot(dir)
 		dir = dir.rotated(dir_inc)
 		i += 1
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+
